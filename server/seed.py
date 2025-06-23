@@ -1,20 +1,17 @@
+# server/seed.py
 #!/usr/bin/env python3
 
-from random import choice as rc
-
 from faker import Faker
-
 from app import app
 from models import db, Movie
 
 fake = Faker()
 
 def make_movies():
-
     Movie.query.delete()
     
     movies = []
-    for i in range(50):
+    for _ in range(50):
         m = Movie(title=fake.sentence(nb_words=4).title())
         movies.append(m)
 
